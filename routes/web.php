@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +21,9 @@ Route::get('/', function () {
 });
 
 Route::resource('employees', EmployeeController::class);
+Route::resource('departments', DepartmentController::class);
 
 Route::middleware('jwt.verify')->group(function(){
     Route::get('users',[UserController::class,'index']);
-    
-    
-    
+   
 });

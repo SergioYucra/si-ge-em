@@ -4,13 +4,13 @@
 
 @section('body')
     <br>
-    <h2 class="text-danger font-weight-bold text-center">Empleados</h2>
+    <h2 class="text-danger font-weight-bold text-center">Departamentos</h2>
     <br>
     <div class="container">
-        <a href="{{ route('employees.create') }}" class="btn btn-success">
-            {{ __('+ Agregar Empleado') }}
+        <a href="{{ route('departments.create') }}" class="btn btn-success">
+            {{ __('+ Agregar Departamento') }}
         </a>
-        @livewire('employee-index')
+        @livewire('department-index')
     </div>
 
 @stop

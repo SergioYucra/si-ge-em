@@ -13,7 +13,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee.index');
+        $employees = Employee::all(); 
+        return view('employee.index',compact('employees'));
     }
 
     public function create()
@@ -87,6 +88,10 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        session()->flash('message2', 'Se elimino el registro de empleado');
+
+        return redirect()->route('employees.index');
     }
 }
