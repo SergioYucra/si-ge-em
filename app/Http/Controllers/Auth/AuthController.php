@@ -28,6 +28,7 @@ class AuthController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json([
+            'message' => 'Se registro el usuario',
             'user' => $user,
             'token' => $token
         ], 201);
@@ -48,6 +49,21 @@ class AuthController extends Controller
                 'error' => 'no se creo el token',
             ], 500);
         }
-        return response()->json(compact('token'), 200);
+
+        return response()->json([
+            'message' => 'token para acceso',
+            'token' => $token
+        ], 200);
+    }
+
+
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function showLogin()
+    {
+        return view('auth.login');
     }
 }

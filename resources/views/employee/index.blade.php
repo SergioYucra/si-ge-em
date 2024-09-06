@@ -2,7 +2,7 @@
 
 @section('title', 'Empleados')
 
-@section('body')
+@section('content')
     <br>
     <h2 class="text-danger font-weight-bold text-center">Empleados</h2>
     <br>

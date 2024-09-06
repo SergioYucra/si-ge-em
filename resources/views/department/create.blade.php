@@ -2,7 +2,7 @@
 
 @section('title', 'Registrar')
 
-@section('body')
+@section('content')
     <br>
     <div class="container">
         <div class="card">

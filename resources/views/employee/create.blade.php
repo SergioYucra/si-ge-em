@@ -2,7 +2,9 @@
 
 @section('title', 'Registrar')
 
-@section('body')
+@section('content')
+    <br>
+    <h2 class="text-success font-weight-bold text-center">Registro Empleado</h2>
     <br>
     <div class="container">
         <div class="card">
@@ -18,7 +20,7 @@
                                     class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
                                     placeholder="{{ __('Introducir nombre') }}" autofocu>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +37,7 @@
                                     class="form-control @error('lastname') is-invalid @enderror" value="{{ old('lastname') }}"
                                     placeholder="{{ __('Introducir Apellido') }}" autofocu>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +54,7 @@
                                     class="form-control @error('ci') is-invalid @enderror" value="{{ old('ci') }}"
                                     placeholder="{{ __('Introducir Cedula de Identidad') }}" autofocu>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-id-card-o" aria-hidden="true"></i>
                                 </span>
                                 @error('ci')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +75,7 @@
                                     class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
                                     placeholder="{{ __('Introducir Email') }}" autofocu>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
                                 </span>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -90,7 +92,7 @@
                                     class="form-control @error('address') is-invalid @enderror"
                                     value="{{ old('address') }}" placeholder="{{ __('Introducir Direccion') }}" autofocu>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
@@ -114,7 +116,7 @@
                                     @endforeach
                                 </select>
                                 <span class="input-group-text">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fa fa-university" aria-hidden="true"></i>
                                 </span>
                                 @error('department_id')
                                     <span class="invalid-feedback" role="alert">
@@ -130,7 +132,7 @@
 
                     <!-- botones -->
                     <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
-                        <a class="btn grey btn-outline-secondary" href="{{-- route('admin.cursos.index') --}}">{{ __('Cancelar') }}</a>
+                        <a class="btn grey btn-outline-secondary" href="{{route('employees.index') }}">{{ __('Cancelar') }}</a>
                         <button type="submit" class="btn btn-success">{{ __('Enviar') }}</button>
                     </div>
                 </form>

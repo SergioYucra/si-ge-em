@@ -17,21 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::post('register',[AuthController::class,'register']);
-//Route::post('login',[AuthController::class,'login']);
 
+/*Ruta backend para registro y acceso de usuarios Autenticacion JWT*/
 Route::controller(AuthController::class)->group(function(){
     Route::post('register','register')->name('auth.register');
-    Route::post('login','login')->name('auth.login');
+    Route::post('login','login')->name('auth.login');    
 });
 
-//Route::resource('employees', EmployeeController::class);
-
-//Route::post('employees',[EmployeeController::class,'store']);
-
-/*
-Route::middleware('jwt.verify')->group(function(){
-    Route::get('users',[UserController::class,'index']);
-    
-    
-});*/
+/*Grupo de rutas protegidas*/
+Route::middleware('jwt.verify')->group(function () {
+    //Todas las rutas en esta parte seran protegidas y es necesario tener un token para su ingreso mediante backend
+    Route::get('users', [UserController::class, 'index'])->name('user.index');
+});

@@ -28,5 +28,7 @@ class DepartmentSeeder extends Seeder
         Department::create([
             'name' => 'RRHH' ,
         ]);
+
+        Department::factory(45)->create();
     }
 }

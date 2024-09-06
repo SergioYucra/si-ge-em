@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
@@ -16,14 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/* ruta de inicio*/
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');;
 
-Route::resource('employees', EmployeeController::class);
-Route::resource('departments', DepartmentController::class);
 
-Route::middleware('jwt.verify')->group(function(){
-    Route::get('users',[UserController::class,'index']);
-   
-});
+/*Rutas de Empleados y Departamentos*/ 
+Route::resource('employees', EmployeeController::class)->except(['show']);
+Route::resource('departments', DepartmentController::class)->except(['show']);
+
+
+/*Rutas para frontend de form registro y acceso*/
+Route::get('register', [AuthController::class, 'showRegister'])->name('auth.showRegister');
+Route::get('login', [AuthController::class, 'showLogin'])->name('auth.showLogin');
+
+
+
+

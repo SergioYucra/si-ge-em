@@ -7,24 +7,21 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    /*Acceso a lista departamentos*/
     public function index()
     {
         $departments = Department::all(); 
         return view('department.index',compact('departments'));
     }
 
+    /*Acceso a vista formulario para registro depatamentos*/
     public function create()
     {
         $departments = Department::all();
         return view('department.create',compact('departments'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    /*Registro en base de datos de departamentos*/
     public function store(Request $request)
     {
         $request->validate([
@@ -40,23 +37,14 @@ class DepartmentController extends Controller
         return redirect()->route('departments.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Department $department)
-    {
-        //
-    }
-
+    /*Acceso a a vista formulario de actualizacion de registro depatamentos*/
     public function edit(Department $department)
     {
         $departments = Department::all();
         return view('department.edit',  compact('department','departments'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    /*Actualizacion de registro de departamentos*/
     public function update(Request $request, Department $department)
     {
         $department->name = $request->name;
@@ -67,9 +55,7 @@ class DepartmentController extends Controller
         return redirect()->route('departments.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    /*Eliminacion de registro de depatamentos*/
     public function destroy(Department $department)
     {
         $department->delete();

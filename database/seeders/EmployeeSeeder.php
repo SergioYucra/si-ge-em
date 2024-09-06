@@ -21,5 +21,7 @@ class EmployeeSeeder extends Seeder
             'address' => 'Pampahasi Av. circunvalacion',
             'department_id' => 4,
         ]);
+
+        Employee::factory(49)->create();
     }
 }

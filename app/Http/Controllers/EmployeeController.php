@@ -8,24 +8,20 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    /*Acceso a lista de empleados*/
     public function index()
     {
-        $employees = Employee::all(); 
-        return view('employee.index',compact('employees'));
+        $employees = Employee::all();
+        return view('employee.index', compact('employees'));
     }
-
+    /*Acceso a vista formulario para registro de empleados*/
     public function create()
     {
         $departments = Department::all();
-        return view('employee.create',compact('departments'));
+        return view('employee.create', compact('departments'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    /*Registro en base de datos de empleados*/
     public function store(Request $request)
     {
         $request->validate([
@@ -36,7 +32,7 @@ class EmployeeController extends Controller
             'address' => 'required|max:255',
             'department_id' => 'required',
         ]);
-        
+
         $employee = new Employee();
         $employee->name = $request->name;
         $employee->lastname = $request->lastname;
@@ -51,23 +47,14 @@ class EmployeeController extends Controller
         return redirect()->route('employees.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Employee $employee)
-    {
-        //
-    }
-
+    /*Acceso a a vista formulario de actualizacion de registro de empleados*/
     public function edit(Employee $employee)
     {
         $departments = Department::all();
-        return view('employee.edit',  compact('employee','departments'));
+        return view('employee.edit',  compact('employee', 'departments'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    /*Actualizacion de registro de empleados*/
     public function update(Request $request, Employee $employee)
     {
         $employee->name = $request->name;
@@ -83,9 +70,7 @@ class EmployeeController extends Controller
         return redirect()->route('employees.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    /*Eliminacion de registro de empleados*/
     public function destroy(Employee $employee)
     {
         $employee->delete();
